@@ -53,13 +53,14 @@ function App() {
                 isMessage={isMessage}
                 maxValueHandler={maxValueHandler}
                 startValueHandler={startValueHandler}/>
-            <CounterDisplay value={value}
-                            incHandler={incHandler}
-                            resetHandler={resetHandler}
-                            isMessage={isMessage}
-                            maxValue={maxValue}
-                            startValue={startValue}
-                            isError={isError}
+            <CounterDisplay
+                value={value}
+                incHandler={incHandler}
+                resetHandler={resetHandler}
+                isMessage={isMessage}
+                maxValue={maxValue}
+                startValue={startValue}
+                isError={isError}
             />
         </div>
     );

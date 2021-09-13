@@ -8,7 +8,6 @@ type CustomButtonPropsType = {
     disabled?: boolean
 }
 
-
 const CustomButton = (props: CustomButtonPropsType) => {
     return (
         <div>

@@ -12,8 +12,6 @@ type CounterSettingsPropsType = {
     isMessage: boolean
     maxValueHandler: (value: number) => void
     startValueHandler: (value: number) => void
-
-
 }
 
 
@@ -25,20 +23,30 @@ const CounterSettings = (props: CounterSettingsPropsType) => {
         props.startValueHandler(e.currentTarget.valueAsNumber)
     }
 
+
     return (
         <div className="mainContainer">
             <div className="valueContainer">
-                <SettingsBlock title={'max value:'}
-                               onClick={props.setValuesHandler}
-                               value={props.maxValue}
-                               onChange={onChangeMaxHandler}/>
-                <SettingsBlock title={'start value'}
-                               onClick={props.setValuesHandler}
-                               value={props.startValue}
-                               onChange={onChangeStartHandler}/>
+                <div className={s.text}>
+                    <SettingsBlock
+                        startValue={props.startValue}
+                        maxValue={props.maxValue}
+                        title={'max value:'}
+                        value={props.maxValue}
+                        onChange={onChangeMaxHandler}/>
+                </div>
+                <div className={s.text}>
+                    <SettingsBlock
+                        startValue={props.startValue}
+                        maxValue={props.maxValue} title={'start value'}
+                        value={props.startValue}
+                        onChange={onChangeStartHandler}/>
+                </div>
+
+
             </div>
             <div className="buttonContainer">
-                <CustomButton title={'set'}/>
+                <CustomButton title={'set'} onClick={props.setValuesHandler}/>
             </div>
 
         </div>

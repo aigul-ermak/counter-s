@@ -3,22 +3,27 @@ import '../../App.css';
 import s from './SettingsBlock.module.css'
 
 type SettingsBlockPropsType = {
-    onClick: () => void
     value: number
     onChange: (e: ChangeEvent<HTMLInputElement>) => void
     title: string
-
+    startValue: number
+    maxValue: number
 }
 
 
 const SettingsBlock = (props: SettingsBlockPropsType) => {
+    let errorSV = (props.startValue < 0 || props.maxValue < 0) ? s.error : '';
+    let errorBoth = (props.startValue === props.maxValue) ? s.error : '';
+
+
     return (
         <div>
             <span>{props.title}</span>
-            <input type="number"
-                   onClick={props.onClick}
-                   value={props.value}
-                   onChange={props.onChange}/>
+            <input
+                className={`${errorSV} ${errorBoth}`}
+                type="number"
+                value={props.value}
+                onChange={props.onChange}/>
         </div>
     )
 }

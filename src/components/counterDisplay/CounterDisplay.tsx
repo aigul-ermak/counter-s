@@ -34,7 +34,7 @@ const CounterDisplay = (props: CounterDisplayPropsType) => {
         }
     }, [props.isMessage, props.value, props.maxValue, props.startValue])
 
-    let messageText = (props.isError) ? 'incorrect value' : 'enter values and press set'
+    let messageText = (props.isError) ? 'incorrect value!!!' : 'enter values and press set'
 
     useEffect (() => {
         if (props.isError || (props.maxValue === props.value && !props.isMessage)) {
