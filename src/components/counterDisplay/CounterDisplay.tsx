@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import '../../App.css';
 import s from './CounterDisplay.module.css'
 import CustomButton from '../customButton/CustomButton';
+import { useDispatch } from "react-redux";
+import {IncValueActionCreator, ResetValueActionCreator} from '../../bll/counter-reducer';
 
 type CounterDisplayPropsType = {
     value: number
-    incHandler: () => void
-    resetHandler: () => void
+    // incHandler: () => void
+    // resetHandler: () => void
     startValue: number
     maxValue: number
     isMessage: boolean
@@ -14,6 +16,8 @@ type CounterDisplayPropsType = {
 }
 
 const CounterDisplay = (props: CounterDisplayPropsType) => {
+    const dispatch = useDispatch()
+
     let [incButtonDisabled, setIncButtonDisabled] = useState(false)
     let [resetButtonDisabled, setResetButtonDisabled] = useState(false)
     let [valueClass, setValueClass] = useState('')
@@ -44,6 +48,16 @@ const CounterDisplay = (props: CounterDisplayPropsType) => {
         }
     })
 
+    const incButtonHandler = () => {
+        const action = IncValueActionCreator(props.value)
+        dispatch(action)
+    }
+
+    const resetButteonHandler = () => {
+        const action = ResetValueActionCreator(props.value)
+        dispatch(action)
+    }
+
     return (
         <div className="mainContainer">
             <div className="valueContainer">
@@ -52,8 +66,8 @@ const CounterDisplay = (props: CounterDisplayPropsType) => {
                 {/*valueCLass*/}
             </div>
             <div className="buttonContainer">
-                <CustomButton title={'inc'} onClick={props.incHandler} disabled={incButtonDisabled}/>
-                <CustomButton title={'reset'} onClick={props.resetHandler} disabled={resetButtonDisabled}/>
+                <CustomButton title={'inc'} onClick={incButtonHandler} disabled={incButtonDisabled}/>
+                <CustomButton title={'reset'} onClick={resetButteonHandler} disabled={resetButtonDisabled}/>
             </div>
 
         </div>
